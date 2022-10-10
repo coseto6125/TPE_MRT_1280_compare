@@ -1,0 +1,3 @@
+title=MRT1280compare
+author=ENoR
+orientation=portrait
