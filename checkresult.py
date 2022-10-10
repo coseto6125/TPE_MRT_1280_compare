@@ -2,7 +2,7 @@
 # @Author: E-NoR
 # @Date:   2022-10-09 06:25:44
 # @Last Modified by:   E-NoR
-# @Last Modified time: 2022-10-10 22:29:21
+# @Last Modified time: 2022-10-10 23:55:51
 from collections import namedtuple
 from json import loads
 import pandas as pd
@@ -59,6 +59,7 @@ def main(checkDate, money, customHolidays):
             1280 -
             (30 - len(yearData & dateRange) - customHolidays) * money * 2) * -1
         區間自費 = money * 2 * payDate
+        區間自費 = 區間自費 if 區間自費>0 else 0
         最高省下 = 省下費用 - 區間自費
         起始日 = f'{起始日[:4]}/{起始日[-4:-2]}/{起始日[-2:]}'
         if 最高省下 >= currentMoney:
