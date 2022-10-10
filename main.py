@@ -2,7 +2,7 @@
 # @Author: E-NoR
 # @Date:   2022-10-09 05:43:11
 # @Last Modified by:   E-NoR
-# @Last Modified time: 2022-10-10 22:29:10
+# @Last Modified time: 2022-10-10 23:30:16
 import kivy
 
 kivy.require('1.9.1')
@@ -25,11 +25,28 @@ class Calendar(BoxLayout):
         super().__init__(**kwargs)
         self.date_dialog = self.createDatePicker(MDApp())
         self.ids.ti.readonly = True
+        
 
     def createDatePicker(self, *args):
+        def generate_list_widgets_years(self) -> None:
+            for i, number_year in enumerate(range(self.min_year, self.max_year)):
+                self.ids._year_layout.data.append(
+                    {
+                        "owner": self,
+                        "text": str(number_year),
+                        "index": i,
+                        "selectable": True,
+                        "viewclass": "DatePickerYearSelectableItem",
+                    }
+                )
+        def passS():
+            return
+        
         date_dialog = MDDatePicker()
-        date_dialog.min_year = date_dialog.sel_year
-        date_dialog.max_year = date_dialog.sel_year + 3
+        date_dialog.min_year = date_dialog.year
+        date_dialog.max_year = date_dialog.year + 3
+        date_dialog.generate_list_widgets_years = generate_list_widgets_years(date_dialog)
+        date_dialog.generate_list_widgets_years = passS
         date_dialog.bind(on_save=self.on_save, on_cancel=self.on_cancel)
         return date_dialog
 
