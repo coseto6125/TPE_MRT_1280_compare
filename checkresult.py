@@ -32,9 +32,7 @@ def dateList(beginDate, range=30):
         datetime.strftime(x, "%Y%m%d")
         for x in list(pd.date_range(start=str(beginDate), periods=range))
     }
-    if range == 7:
-        return sorted(date)
-    return date
+    return sorted(date) if range == 7 else date
 
 
 def main(checkDate, money, customHolidays):
@@ -87,7 +85,7 @@ if __name__ == "__main__":
         print("請輸入數字，費用為必填，區間為 25~60")
     while (
         customHolidays := input("請輸入自訂假日天數: ")
-    ).isdigit() != True and customHolidays in range(0, 11):
+    ).isdigit() != True and customHolidays in range(11):
         if not customHolidays:
             customHolidays = 0
     main(int(checkDate), int(money), int(customHolidays))
